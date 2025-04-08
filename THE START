@@ -1,0 +1,66 @@
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { ShoppingCart } from "lucide-react";
+
+const products = [
+  {
+    id: 1,
+    name: "Product One",
+    description: "A short description of product one.",
+    price: "$29.99",
+    image: "https://via.placeholder.com/300x200"
+  },
+  {
+    id: 2,
+    name: "Product Two",
+    description: "A short description of product two.",
+    price: "$49.99",
+    image: "https://via.placeholder.com/300x200"
+  },
+  {
+    id: 3,
+    name: "Product Three",
+    description: "A short description of product three.",
+    price: "$19.99",
+    image: "https://via.placeholder.com/300x200"
+  }
+];
+
+export default function FNEStore() {
+  return (
+    <div className="min-h-screen bg-white px-6 py-10 font-sans">
+      <header className="flex items-center justify-between pb-8 border-b">
+        <h1 className="text-3xl font-bold text-gray-800">FNE Store</h1>
+        <Button className="flex items-center gap-2">
+          <ShoppingCart size={20} /> Cart
+        </Button>
+      </header>
+
+      <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-10">
+        {products.map((product) => (
+          <Card key={product.id} className="rounded-2xl shadow-md">
+            <img
+              src={product.image}
+              alt={product.name}
+              className="w-full h-48 object-cover rounded-t-2xl"
+            />
+            <CardContent className="p-4">
+              <h2 className="text-xl font-semibold text-gray-800">
+                {product.name}
+              </h2>
+              <p className="text-gray-600 text-sm mb-2">{product.description}</p>
+              <div className="flex items-center justify-between">
+                <span className="text-lg font-medium text-black">
+                  {product.price}
+                </span>
+                <Button>Add to Cart</Button>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </main>
+    </div>
+  );
+}
+
